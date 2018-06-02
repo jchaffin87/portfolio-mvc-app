@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Project</title>		
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<div class="headline">
+					<h1>John's Portfolio Site</h1>
+				</div>
+				<nav>
+					<h3><a href="/projects">Projects</a></h3>
+					<h3><a href="/categories.html">Categories</a></h3>
+					<h3><a href="/tags.html">Tags</a></h3>
+				</nav>
+			</header>
+			<main>
+				<div class="projectStuff">
+					<h2 th:text="${project.projectName}"></h2><!-- displays project title -->
+					<img th:src="${project.imageUrl}" alt="Picture of Project"/> <!-- displays project image -->
+
+					<p th:text="${project.projectDescription}"></p> <!-- displays project description -->
+					<h3>Category:</h3>
+					<a th:href="@{/category(id=${project.category.categoryId})}" th:text="${project.category.categoryName}"></a> <!-- displays title of and link to project category -->
+					<div class="tags">
+						<h2>Tags: </h2>
+						<ul class="tagList">
+							<li th:each="tag: ${project.tags}">
+								<a th:href="@{/tag(id=${tag.tagId})}" th:text="${tag.tagName}"></a>
+							</li> <!-- displays title of and link to all tags associated with this project -->
+				 		</ul>
+					</div>
+				</div>					
+			</main>
+			<footer>
+				<p>copyright John Ryan Chaffin, 2017</p>
+			</footer>
+		</div>
+	</body>
+</html>

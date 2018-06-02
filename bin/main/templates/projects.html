@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>John's Portfolio Site</title>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<div class="headline">
+					<h1>John's Portfolio Site</h1>
+				</div>
+				<nav>
+					<h3><a href="/projects">Projects</a></h3>
+					<h3><a href="/categories.html">Categories</a></h3>
+					<h3><a href="/tags.html">Tags</a></h3>
+				</nav>
+			</header>
+			<main>
+				<div th:each="project: ${projects}">
+					<img th:src="${project.imageUrl}" alt="Picture of Project"/>
+					<h2>			
+						<a th:href="@{/project(id=${project.projectId})}" th:text="${project.projectName}"></a>
+					</h2>
+				</div>
+			</main>
+			<footer>
+				<p>copyright John Ryan Chaffin, 2017</p>
+			</footer>
+		</div>
+	</body>
+	
+</html>
